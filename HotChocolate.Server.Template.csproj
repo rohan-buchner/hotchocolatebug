@@ -9,6 +9,8 @@
     <PackageReference Include="HotChocolate.AspNetCore" Version="11.1.0" />
     <PackageReference Include="HotChocolate.AspNetCore.Authorization" Version="11.1.0" />
     <PackageReference Include="HotChocolate.Data" Version="11.1.0" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
   </ItemGroup>
 
 </Project>

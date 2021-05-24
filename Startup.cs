@@ -1,3 +1,4 @@
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -22,7 +23,10 @@ namespace HotChocolate.Server.Template
             // services.AddSingleton<Query>();
             services
                 .AddGraphQLServer()
-                .AddQueryType<Query>();
+                .AddQueryType<Query>()
+                .AddMutationType<MutationType>();
+
+            services.AddMediatR(typeof(EchoMessageType));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,7 +42,7 @@ namespace HotChocolate.Server.Template
             app.UseEndpoints(endpoints =>
             {
                 // By default the GraphQL server is mapped to /graphql
-                // This route also provides you with our GraphQL IDE. 
+                // This route also provides you with our GraphQL IDE.
                 // In order to configure the GraphQL IDE use endpoints.MapGraphQL().WithToolOptions(...).
                 endpoints.MapGraphQL();
             });
