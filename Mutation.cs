@@ -12,18 +12,13 @@ namespace HotChocolate.Server.Template
 
     public class Mutation
     {
-        protected ISender Mediator { get; }
-
-        public Mutation(ISender mediator)
-        {
-            Mediator = mediator;
-        }
-
-        public async Task<string> EchoMessage(EchoMessageType payload)
+        public async Task<string> EchoMessage(
+             [Service] ISender mediator, 
+             EchoMessageType payload)
         {
             try
             {
-                return await Mediator.Send(payload);
+                return await mediator.Send(payload);
             }
             catch (Exception e)
             {
